@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,9 +22,6 @@ public class CodeActivity extends AppCompatActivity {
     @BindView(R.id.etCode)
     EditText etCode;
 
-    @BindView(R.id.imgMain)
-    ImageView imgMain;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Generated code, necessary for the activity to work
@@ -36,7 +34,7 @@ public class CodeActivity extends AppCompatActivity {
 
     public boolean isValidCode(String code){
         boolean ret = false;
-        String[] possibilities = {"Tammy","Truck","Musical Watch"};
+        String[] possibilities = {"It","Could","Have", "Been", "Any of Us"};
 
         for (String possibility:possibilities) {
             ret |= code.equalsIgnoreCase(possibility);
