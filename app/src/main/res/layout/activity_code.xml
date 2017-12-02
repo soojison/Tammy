@@ -14,9 +14,16 @@
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mono"
+            android:text="Enter the code you see to discover."/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/mono"
             android:hint="What's Next?"
             android:id="@+id/etCode"/>
 
@@ -24,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enter"
+            android:fontFamily="@font/mono"
             android:layout_gravity="right"
             android:id="@+id/btnEnter"/>
     </LinearLayout>
