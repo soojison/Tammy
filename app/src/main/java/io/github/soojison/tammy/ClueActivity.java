@@ -1,6 +1,7 @@
 package io.github.soojison.tammy;
 
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
@@ -36,18 +37,12 @@ public class ClueActivity extends AppCompatActivity {
 
         crashed = false;
 
-        Bitmap it = BitmapFactory.decodeResource(getResources(), R.drawable.it);
-        Bitmap could = BitmapFactory.decodeResource(getResources(), R.drawable.could);
-        Bitmap have = BitmapFactory.decodeResource(getResources(), R.drawable.have);
-        Bitmap been = BitmapFactory.decodeResource(getResources(), R.drawable.been);
-
-        Bitmap[] arr = {it, could, have, been};
-
         // we always have to make sure that the intent we get has an extra that we put in
         if (getIntent().hasExtra("code")) {
             String code = getIntent().getStringExtra("code");
             //test to see if we have unpacked the correct one
             int imageIndex = returnImgIndex(code);
+            //Toast.makeText(this, imageIndex + "", Toast.LENGTH_SHORT).show();
             if(imageIndex == 4) {
                 crashed = true;
                 View view = this.getWindow().getDecorView();
@@ -55,18 +50,19 @@ public class ClueActivity extends AppCompatActivity {
                 imgClue.setVisibility(View.INVISIBLE);
                 btnContinue.setVisibility(View.INVISIBLE);
             } else {
-                Bitmap bitmap = arr[imageIndex];
+                Bitmap bitmap = CodeActivity.arr[imageIndex];
                 Glide.with(this).load(bitmap).into(imgClue);
             }
         }
     }
 
+
     @Override
     public void onBackPressed() {
         if(crashed) {
             new AlertDialog.Builder(this)
-                    .setTitle("It could have been")
-                    .setMessage("any of us")
+                    .setTitle("What do you trust?")
+                    .setMessage("We're all vulnerable")
                     .setNegativeButton(android.R.string.no, null)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
@@ -92,7 +88,4 @@ public class ClueActivity extends AppCompatActivity {
     public void closeActivity() {
         finish();
     }
-
-
-    // here we write a function that decides what happens based on the code
 }
