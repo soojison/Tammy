@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,6 +36,8 @@ public class ClueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_clue);
         ButterKnife.bind(this);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         crashed = false;
 
         // we always have to make sure that the intent we get has an extra that we put in
@@ -51,7 +54,8 @@ public class ClueActivity extends AppCompatActivity {
                 btnContinue.setVisibility(View.INVISIBLE);
             } else {
                 Bitmap bitmap = CodeActivity.arr[imageIndex];
-                Glide.with(this).load(bitmap).into(imgClue);
+                imgClue.setImageBitmap(bitmap);
+                //Glide.with(this).load(bitmap).into(imgClue);
             }
         }
     }

@@ -50,6 +50,8 @@ public class CodeActivity extends AppCompatActivity {
         // Using external library to make getting elements from the view easier
         ButterKnife.bind(this);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         Bitmap it = decodeSampledBitmapFromResource(getResources(), R.drawable.it, 400, 400);
         Bitmap could = decodeSampledBitmapFromResource(getResources(), R.drawable.could, 400, 400);
         Bitmap have = decodeSampledBitmapFromResource(getResources(), R.drawable.have, 400, 400);
